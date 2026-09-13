@@ -1,0 +1,67 @@
+{
+  "name": "trainmath",
+  "version": "0.1.0",
+  "description": "Plan and sanity-check LLM pretraining runs in TypeScript - parameter counts, FLOPs per token, MFU from measured throughput, expected tokens/sec, Chinchilla token budgets, per-GPU memory under DDP, ZeRO and FSDP, hours and cost on H100, A100, B200, MI300X and TPU; Markdown reports, a CLI and a browser demo; zero dependencies.",
+  "keywords": [
+    "llm",
+    "pretraining",
+    "mfu",
+    "flops",
+    "chinchilla",
+    "scaling-laws",
+    "gpu",
+    "h100",
+    "fsdp",
+    "training-cost",
+    "memory-estimate",
+    "transformer",
+    "machine-learning",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "Muzaffar Qosimov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwertymuzaffar/trainmath.git"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "bin": {
+    "trainmath": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "build:demo": "node scripts/build-demo.mjs",
+    "prepublishOnly": "npm run build && npm test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.2",
+    "@types/node": "^22.20.1",
+    "@vitest/coverage-v8": "4.1.11",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^4.0.8"
+  }
+}
